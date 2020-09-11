@@ -1,0 +1,155 @@
+body{
+    margin:0;
+    max-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.navbar{
+    background-color:#36393f;
+    min-height:50px;
+    box-shadow: 0 3px 10px 0 #333;
+    z-index: 180; 
+    
+}
+
+.main{
+    /* background-color:#42464d; */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;  
+}
+
+.side-menu{
+    background-color: #202225;
+    min-width: 90px;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    overflow-
+}
+
+.room-button {
+    border: 2px solid rgb(29, 29, 29);
+    color: #43B581;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.75rem 1rem 0;
+    height: 60px;
+    max-width: 60px;
+    border-radius: 6px;
+    background-color: #36393f;
+    box-shadow: 0 1px 3px 1px #202225;
+    overflow-wrap: break-word;
+}
+
+.room-button:hover{
+    box-shadow:  0 2px 3px 1px #131416;
+}
+
+
+.chat{
+    background-color: #42464d;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: 93vh;
+}
+
+.chat-body{
+   
+    border-radius: 10px;
+    margin: 0.75rem;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.chat-input{
+    background-color: #3B3E45;
+    min-height: 70px;
+    border-radius: 10px;
+    margin: 0.75rem;
+}
+
+.message{
+    display: flex  ;
+    flex-direction: column;
+    margin: 1rem;
+    color: white;
+}
+
+
+.message > header{
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+.message > p{
+    
+   margin: 0.5rem 0;
+    flex-grow: 1; 
+}
+
+.message > footer{
+    flex-grow: 1;
+}
+
+
+.modal{
+    display: none;
+    position: fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+    z-index: 200;
+    top:  0;
+    left: 0;
+    background-color: rgba(0.2, 0.2, 0.2, 0.83);
+}
+
+.modal.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.modal-body{
+    position: relative;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: #42464d;
+    padding: 1rem;
+}
+
+.modal-body > * {
+    margin: 0.75rem;
+}
+
+.modal-body > header{
+    color: white;
+    font-size:  24px;
+}
+
+
+
+.modal-body > div > input{
+    width: 100%;
+}
+
+.modal-body > footer{
+    text-align: center;
+}
+
+.modal-body > .close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
