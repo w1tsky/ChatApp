@@ -73,6 +73,29 @@ html, body{
     min-height: 70px;
     border-radius: 10px;
     margin: 0.75rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.chat-input > input
+{
+    color: white;
+    background: transparent;
+    border: none;
+    flex-grow: 5;
+
+}
+
+.chat-input > button
+{ 
+    border: 2px solid #3B3E45;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background-color: #36393f;
+    flex-grow: 1;
+    margin: 0.5rem;
+    border-radius: 10px;
 }
 
 .message{

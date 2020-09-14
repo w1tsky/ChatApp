@@ -3,7 +3,7 @@
 <div class="side-menu">
      @foreach (var chat in Model)
      {
-          <a class="room-button" href="#"> 
+          <a class="room-button" asp-controller="Home" asp-action="Chat" asp-route-id="@chat.Id"> 
                @chat.Name             
           </a>  
      }

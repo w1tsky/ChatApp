@@ -1,0 +1,20 @@
+@model Chat
+
+
+<div class="chat-body">
+   @foreach (var message in Model.Messages)
+   {
+    <div class="message">
+        <header>@message.Name</header>
+        <p>@message.Text</p>
+        <footer>@message.Timestamp</footer>
+    </div>   
+   }
+   
+    
+</div>
+<div class="chat-input">
+    <form></form>
+    <input type="text">
+    <button>Send</button>
+</div>

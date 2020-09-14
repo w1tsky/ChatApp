@@ -5,6 +5,13 @@ namespace ChatApp.Models
 {
     public class Chat
     {
+
+        public Chat()
+        {
+            Messages = new List<Message>();
+            Users = new List<User>();
+
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }
