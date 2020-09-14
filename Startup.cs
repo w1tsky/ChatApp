@@ -43,8 +43,6 @@ namespace ChatApp
             app.UseStaticFiles();
             app.UseDeveloperExceptionPage();
             app.UseMvcWithDefaultRoute();
-            app.UseMvcWithDefaultRoute();
-
         }
     }
 }

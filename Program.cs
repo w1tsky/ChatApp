@@ -20,6 +20,7 @@ namespace ChatApp
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("http://*:3000");
                     webBuilder.UseStartup<Startup>();
                 });
     }

@@ -5,12 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Edge",
+            "name": "Launch Chrome",
             "request": "launch",
-            "type": "pwa-msedge",
-            "url": "http://localhost",
+            "type": "pwa-chrome",
+            "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}"
         },
+        
         {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
