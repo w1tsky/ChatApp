@@ -33,7 +33,7 @@ namespace ChatApp.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return RedirectToAction("Index", "Chat");
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpGet]

@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using ChatApp.Database;
 using ChatApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatApp.Controllers
 {
+
+    [Authorize]
     public class HomeController : Controller
     {
         private AppDbContext _ctx;
