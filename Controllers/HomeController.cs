@@ -29,6 +29,7 @@ namespace ChatApp.Controllers
             return View(chat);
         }
 
+        [HttpPost]
         public async Task<IActionResult> CreateMessage(int chatId, string message)
         {
             var Message = new Message {
@@ -43,6 +44,7 @@ namespace ChatApp.Controllers
             return RedirectToAction("Chat", new {id = chatId});
         }
 
+        [HttpPost]   
         public async Task<IActionResult> CreateRoom(string name)
         {
             _ctx.Chats.Add(new Chat
