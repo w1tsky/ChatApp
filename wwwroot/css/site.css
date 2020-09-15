@@ -8,6 +8,27 @@ html, body{
 }
 
 
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #3B3E45; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
 .navbar{
     background-color:#36393f;
     min-height: 45px;
@@ -25,11 +46,12 @@ html, body{
 
 .side-menu{
     background-color: #202225;
-    min-width: 90px;
+    min-width: 105px;
     z-index: 50;
     display: flex;
     flex-direction: column;
     overflow: auto;
+    max-height: 95vh;
 }
 
 .room-button {
@@ -40,7 +62,8 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0.75rem 1rem 0;
+    margin: 0.75rem 1rem 0 ;
+    
     min-height: 60px;
     min-width: 60px;
     border-radius: 6px;
