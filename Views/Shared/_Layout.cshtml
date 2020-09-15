@@ -15,10 +15,16 @@
     </div>
 
     <div class="main">
-        <vc:room></vc:room>
+
+        @if(User.Identity.IsAuthenticated)
+        {
+             <vc:room></vc:room>
+        }
+       
         <div class="chat">
              @RenderBody()
         </div>
+
     </div>
 
     <div class="modal" id="create-room-modal">
