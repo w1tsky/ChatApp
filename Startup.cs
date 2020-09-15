@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
+using ChatApp.Hubs;
 
 namespace ChatApp
 {
@@ -51,7 +52,7 @@ namespace ChatApp
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseSignalR(routes =>{
-
+                routes.MapHub<ChatHub>("/chatHub");
             });
             app.UseMvcWithDefaultRoute();
         }

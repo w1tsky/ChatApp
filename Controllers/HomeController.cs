@@ -52,6 +52,7 @@ namespace ChatApp.Controllers
 
             _ctx.Messages.Add(Message);
             await _ctx.SaveChangesAsync();
+            
             return RedirectToAction("Chat", new { id = chatId });
         }
 
