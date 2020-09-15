@@ -61,8 +61,6 @@ namespace ChatApp.Controllers
 
 
 
-
-
         public async Task<IActionResult> Logout(string username, string password)
         {
             await _signInManager.SignOutAsync();
