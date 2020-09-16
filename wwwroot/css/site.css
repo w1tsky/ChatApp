@@ -1,6 +1,6 @@
 html, body{
     margin:0; 
-    width: 100%; 
+    width: 100vw; 
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -83,6 +83,7 @@ html, body{
     display: flex;
     flex-direction: column;     
     max-height: 95vh;
+    min-width: 60vw;
 }
 
 
@@ -130,6 +131,7 @@ html, body{
     flex-direction: column;
     margin: 1rem;
     color: white;
+    overflow-wrap: break-word;
 }
 
 
@@ -140,7 +142,7 @@ html, body{
 
 .message > p{
     
-   margin: 0.5rem 0;
+    margin: 0.5rem 0;
     flex-grow: 1; 
 }
 
