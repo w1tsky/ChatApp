@@ -1,7 +1,7 @@
 @model Chat
 
 
-<div class="chat-body">
+<div class="chat-body" id="chat-scroll">
    @foreach (var message in Model.Messages)
    {
     <div class="message">
@@ -15,7 +15,7 @@
 <form class="chat-input" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
     <input type="hidden" name="chatId" value="@Model.Id">
     <input type="hidden" name="roomName" value="@Model.Name">
-    <input type="text" name="message">
+    <input type="text" name="message" id="message-input">
     <button type="submit">Send</button>
 </form>  
 
@@ -25,9 +25,15 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
 
+            window.onload = scrollToButtom();
+            function scrollToButtom() {
+            var objDiv = document.getElementById("chat-scroll");
+            objDiv.scrollTop = objDiv.scrollHeight;
+            };
+
             const connection = new signalR.HubConnectionBuilder()
                                       .withUrl("/chatHub")
-                                      .configureLogging(signalR.LogLevel.Information)
+                                      .configureLogging(signalR.LogLevel.Debug)
                                       .build();
 
             var _connectionId = '';
@@ -38,7 +44,7 @@
                 var message = document.createElement("div")
                 message.classList.add("message")
                 
-                var header = document.createElement("header ")
+                var header = document.createElement("header")
                 header.appendChild(document.createTextNode(data.name))
 
                 var p = document.createElement("p")
@@ -53,6 +59,7 @@
                 message.appendChild(footer);
 
                document.querySelector(".chat-body").append(message);
+               scrollToButtom();
             })
 
             
@@ -82,10 +89,8 @@
 
            
 
-            var sendMessage = function(event){
-
-                event.preventDefault();                
-              
+            var sendMessage = function(event){ 
+                event.preventDefault();                            
                 var data = new FormData(event.target);
                 axios.post('/Chat/SendMessage', data)
                     .then(res =>{
@@ -94,9 +99,8 @@
                     .catch(err =>{
                         console.log("Failed to send Message!")
                     })
+                document.getElementById('message-input').value = '';
             }
-
-            
 
     </script>
 }
