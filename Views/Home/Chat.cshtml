@@ -9,29 +9,50 @@
         <p>@message.Text</p>
         <footer>@message.Timestamp</footer>
     </div>   
-   }
-   
-    
+   }   
 </div>
-<form class="chat-input" asp-controller="Home" asp-action="CreateMessage">
+
+<form class="chat-input" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
     <input type="hidden" name="chatId" value="@Model.Id">
+    <input type="hidden" name="roomName" value="@Model.Name">
     <input type="text" name="message">
     <button type="submit">Send</button>
 </form>  
 
 @section scripts {
-    <script src="~/js/signalr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.8/signalr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.8/signalr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-      <script>
+    <script>
 
-            var connection = new signalR.HubConnectionBuilder()
+            const connection = new signalR.HubConnectionBuilder()
                                       .withUrl("/chatHub")
+                                      .configureLogging(signalR.LogLevel.Information)
                                       .build();
 
             var _connectionId = '';
 
-            connection.on("RecieveMessage", function(data){
-                console.log(data)
+            connection.on("RecieveMessage", function (data) {
+                console.log(data);
+
+                var message = document.createElement("div")
+                message.classList.add("message")
+                
+                var header = document.createElement("header ")
+                header.appendChild(document.createTextNode(data.name))
+
+                var p = document.createElement("p")
+                p.appendChild(document.createTextNode(data.text))
+
+                var footer = document.createElement("footer")
+                footer.appendChild(document.createTextNode(data.timestamp))
+
+
+                message.appendChild(header);
+                message.appendChild(p);
+                message.appendChild(footer);
+
+               document.querySelector(".chat-body").append(message);
             })
 
             
@@ -59,7 +80,23 @@
                         console.log(err)
                     })
 
+           
+
+            var sendMessage = function(event){
+
+                event.preventDefault();                
+              
+                var data = new FormData(event.target);
+                axios.post('/Chat/SendMessage', data)
+                    .then(res =>{
+                        console.log("Message Sent!")
+                    })
+                    .catch(err =>{
+                        console.log("Failed to send Message!")
+                    })
+            }
+
             
 
-      </script>
+    </script>
 }

@@ -15,8 +15,7 @@ namespace ChatApp.Controllers
     {
         private IHubContext<ChatHub> _chat;
 
-        public ChatController(
-            IHubContext<ChatHub> chat)
+        public ChatController(IHubContext<ChatHub> chat)
         {
             _chat = chat;
         }
@@ -36,6 +35,7 @@ namespace ChatApp.Controllers
             return Ok();
         }
 
+        [HttpPost("[action]")]
         public async Task<IActionResult> SendMessage(
             int chatId,
             string message,
@@ -53,8 +53,7 @@ namespace ChatApp.Controllers
 
             ctx.Messages.Add(Message);
             await ctx.SaveChangesAsync();
-
-
+            
             await _chat.Clients.Group(roomName)
                 .SendAsync("RecieveMessage", Message);
             return Ok();
