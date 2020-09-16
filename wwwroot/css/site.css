@@ -93,7 +93,6 @@ html, body{
     flex-grow: 1;
     flex-direction: column;
     overflow: auto;
-
 }
 
 .chat-input{
@@ -124,10 +123,6 @@ html, body{
     flex-grow: 1;
     margin: 0.5rem;
     border-radius: 10px;
-}
-
-.message:first-child{
-    margin-top: auto;
 }
 
 .message{
