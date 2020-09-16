@@ -55,7 +55,7 @@ namespace ChatApp.Controllers
             await ctx.SaveChangesAsync();
             
             await _chat.Clients.All
-                .SendAsync("RecieveMessage", new{
+                .SendAsync("RecieveMessage", new{            
                     Text = Message.Text,
                     Name = Message.Name,
                     Timestamp = Message.Timestamp.ToString("dd/MM/yyy hh:mm:ss")
