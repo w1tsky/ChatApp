@@ -6,7 +6,8 @@
     <title>ChatApp</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css'  href='~/css/site.css'>
-    <script src='main.js'></script>
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -15,10 +16,16 @@
     </div>
 
     <div class="main">
-        <vc:room></vc:room>
+
+        @if(User.Identity.IsAuthenticated)
+        {
+             <vc:room></vc:room>
+        }
+       
         <div class="chat">
              @RenderBody()
         </div>
+
     </div>
 
     <div class="modal" id="create-room-modal">

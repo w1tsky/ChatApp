@@ -22,6 +22,12 @@ namespace ChatApp
                 {
                     webBuilder.UseUrls("http://*:3000");
                     webBuilder.UseStartup<Startup>();
-                });
+
+                })
+                 .ConfigureLogging(logging =>
+                 {
+                    logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Debug);
+                    logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+            });
     }
 }
