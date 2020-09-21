@@ -241,11 +241,22 @@ html, body{
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding:0rem 1rem;
+}
+.login > a{
+  background-color: rgb(41, 63, 98);
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
+.login > a:hover {
+  background-color: #555;
+}
+
+
 .login-form > *{
-  margin: 0.33rem;
+  margin: 0.33rem 1rem;
 }
 .login > h2{
   justify-content: left;
