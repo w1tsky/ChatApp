@@ -1,10 +1,17 @@
-<div>
-    <form asp-controller="Account" asp-action="Login">
+<div class="login-container">
+  <div class="login">
+    <h2>Log In</h2>
+    <form asp-controller="Account" asp-action="Login" class="login-form" >
+        <h3>Username</h3>
         <input type="text" name="username" placeholder="Username">
+        <h3>Password</h3>
         <input type="password" name="password" placeholder="Password">
-        <button type="submit">Submit</button>
+        <button type="submit">Login</button>
     </form>
-</div>
-<div>
-    <a asp-controller="Account" asp-action="Register">Register</a>
+    <a asp-controller="Account" asp-action="Register">Sing Up</a>
+  </div>
+   
+  <div class="wrap">
+    <h1>Simple Chat App</h1>
+  </div>
 </div>

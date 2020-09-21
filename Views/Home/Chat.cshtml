@@ -25,12 +25,13 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
 
-            window.onload = scrollToButtom();
             function scrollToButtom() {
-            var objDiv = document.getElementById("chat-scroll");
-            objDiv.scrollTop = objDiv.scrollHeight;
+                var objDiv = document.getElementById("chat-scroll");
+                objDiv.scrollTop = objDiv.scrollHeight;
             };
 
+            window.onload = scrollToButtom();
+           
             const connection = new signalR.HubConnectionBuilder()
                                       .withUrl("/chatHub")
                                       .configureLogging(signalR.LogLevel.Debug)
@@ -65,7 +66,7 @@
             
 
             var joinRoom = function(){
-                var url = '/Chat/JoinRoom/' + _connectionId + '/{@Model.Name}'
+                var url = '/Chat/JoinRoom/' + _connectionId + '/@Model.Name'
                 axios.post(url, null)
                     .then(res =>{
                         console.log("Room Joined", res)

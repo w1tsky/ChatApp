@@ -13,25 +13,25 @@ namespace ChatApp.Controllers
     [Route("[controller]")]
     public class ChatController : Controller
     {
-        private IHubContext<ChatHub> _chat;
+        private IHubContext<ChatHub> room;
 
         public ChatController(IHubContext<ChatHub> chat)
         {
-            _chat = chat;
+            room = chat;
         }
 
 
         [HttpPost("[action]/{connectionId}/{roomName}")]
         public async Task<IActionResult> JoinRoom(string connectionId, string roomName)
         {
-            await _chat.Groups.AddToGroupAsync(connectionId, roomName);
+            await room.Groups.AddToGroupAsync(connectionId, roomName);
             return Ok();
         }
 
         [HttpPost("[action]/{connectionId}/{roomName}")]
         public async Task<IActionResult> LeaveRoom(string connectionId, string roomName)
         {
-            await _chat.Groups.RemoveFromGroupAsync(connectionId, roomName);
+            await room.Groups.RemoveFromGroupAsync(connectionId, roomName);
             return Ok();
         }
 
@@ -53,14 +53,15 @@ namespace ChatApp.Controllers
 
             ctx.Messages.Add(Message);
             await ctx.SaveChangesAsync();
-            
-            await _chat.Clients.All
-                .SendAsync("RecieveMessage", new{            
+
+            await room.Clients.Group(roomName)
+                .SendAsync("RecieveMessage", new
+                {
                     Text = Message.Text,
                     Name = Message.Name,
                     Timestamp = Message.Timestamp.ToString("dd/MM/yyy hh:mm:ss")
                 });
-            
+
             return Ok();
         }
     }
