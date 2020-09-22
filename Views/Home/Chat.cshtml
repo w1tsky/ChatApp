@@ -13,8 +13,7 @@
 </div>
 
 <form class="chat-input" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
-    <input type="hidden" name="chatId" value="@Model.Id">
-    <input type="hidden" name="roomName" value="@Model.Name">
+    <input type="hidden" name="roomId" value="@Model.Id">
     <input type="text" name="message" id="message-input">
     <button type="submit">Send</button>
 </form>  
@@ -66,13 +65,13 @@
             
 
             var joinRoom = function(){
-                var url = '/Chat/JoinRoom/' + _connectionId + '/@Model.Name'
+                var url = '/Chat/JoinRoom/' + _connectionId + '/@Model.Id'
                 axios.post(url, null)
                     .then(res =>{
                         console.log("Room Joined", res)
                     })
                     .catch(err =>{
-                        console.err("Failed to Join Room!", res)
+                        console.err("Failed to Join Room!", err)
                     })
             }
 

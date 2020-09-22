@@ -30,6 +30,52 @@ namespace ChatApp.Controllers
             return View(chats);
         }
 
+        public IActionResult Find()
+        {
+            var users = _ctx.Users.Where(x => x.Id != User.FindFirst(ClaimTypes.NameIdentifier).Value)
+            .ToList();
+
+            return View(users);
+        }
+
+
+        public IActionResult Private()
+        {
+            var chats = _ctx.Chats
+            .Include(x => x.Users)
+            .ThenInclude(x => x.User)
+            .Where(x => x.Type == ChatType.Private
+            && x.Users
+                .Any(y => y.UserId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                .ToList();
+
+            return View(chats);
+        }
+
+        public async Task<IActionResult> CreatePrivateRoom(string userId)
+        {
+            var chat = new Chat
+            {
+                Type = ChatType.Private
+            };
+
+            chat.Users.Add(new ChatUser
+            {
+                UserId = userId
+            });
+
+            chat.Users.Add(new ChatUser
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value
+            });
+
+            _ctx.Chats.Add(chat);
+
+            await _ctx.SaveChangesAsync();
+
+            return RedirectToAction("Chat", new { id = chat.Id });
+        }
+
         [HttpGet("{id}")]
         public IActionResult Chat(int id)
         {
@@ -52,7 +98,7 @@ namespace ChatApp.Controllers
 
             _ctx.Messages.Add(Message);
             await _ctx.SaveChangesAsync();
-            
+
             return RedirectToAction("Chat", new { id = chatId });
         }
 
