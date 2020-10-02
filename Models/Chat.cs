@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace ChatApp.Models
 {
@@ -14,6 +14,7 @@ namespace ChatApp.Models
         }
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
         public ChatType Type { get; set; }
         public ICollection<Message> Messages { get; set; }

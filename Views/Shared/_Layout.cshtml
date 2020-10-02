@@ -9,14 +9,21 @@
     <link rel='stylesheet' type='text/css'  href='~/css/site.css'>
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
     <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
 </head>
 <body>
 
-    <div class="navbar">
-        <a asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-controller="Home" asp-action="Find">Find</a>
-       <a asp-controller="Home" asp-action="Private">Private</a>
+    <div class="navbar" id="nav">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Home" asp-action="Find">Find User</a>
+            <a asp-controller="Home" asp-action="BrowseRooms">Browse Rooms</a>
+            <a asp-controller="Home" asp-action="Private">Messages</a>    
+            <a asp-controller="Account" asp-action="Logout" class="logout">Logout</a>
+            <a href="javascript:void(0);" class="icon" onclick="showBar()">
+                <i class="fa fa-bars"></i>
+             </a>
     </div>
 
     <div class="main">
@@ -37,7 +44,7 @@
             <button class="close" onclick="closeModal()">X</button>
             <header>Create Room</header>
             <div>
-                <input name="name">
+                <input name="name" required>
             </div>
             <footer>
                 <button>Create</button>

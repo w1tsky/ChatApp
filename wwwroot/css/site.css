@@ -32,23 +32,92 @@ html, body{
 
 
 .navbar{
-
     background-color:#36393f;
     height: 45px;
     min-height: 40px;
-    max-height: 6vh;
+    max-height: 10vh;
     box-shadow: 0 3px 10px 0 #333;
     z-index: 180; 
     display: flex;
     flex-direction: row;
-
+    align-items: center;
 }
 
+
 .navbar > a{
+  margin: 1rem;
   text-decoration: none;
   color: white;
   font-size: 18px;
-  padding: 1.5rem;
+  display: flex;
+
+}
+
+.navbar > .logout{
+  margin-left: auto;
+  order: 2;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) { 
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: flex;
+    position: relative;
+    margin-left: auto;
+  }
+
+  .login-container > .login{
+    min-width: 100vw;
+  }
+  .login-container > .login > .login-form{
+    align-items: center;
+  }
+
+  .chat{
+    min-width: 100vw;
+  }
+
+
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .navbar.responsive {
+    position: relative;
+    display: inline;
+    flex-direction: column;
+    min-height: 27vh;
+  }
+
+  .navbar.responsive >.logout{
+   
+    display: block;
+    text-align: left;
+    background-color: #36393f;
+    margin: 1rem;
+    
+  }
+
+  .navbar.responsive a {
+    display: block;
+    text-align: left;
+  }
+
+  .navbar.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
 }
 
 .main{
@@ -61,7 +130,6 @@ html, body{
 
 .side-menu{
     background-color: #202225;
-    min-width: 5vw;
     width: 100px;
     z-index: 50;
     display: flex;
@@ -70,18 +138,17 @@ html, body{
 }
 
 .room-button {
-    border: 2px solid rgb(29, 29, 29);
-    color: #43B581;
+    color: white;
     text-align: center;
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0.75rem 1rem 0.5rem 1rem ;
-    
+    margin: 0.75rem 1rem 0.5rem 0.75rem ;
+    font-size: 20px;
     min-height: 60px;
     min-width: 60px;
-    border-radius: 6px;
+    border-radius: 1px;
     background-color: #36393f;
     box-shadow: 0 1px 3px 1px #202225;
     overflow-wrap: break-word;
@@ -97,8 +164,7 @@ html, body{
     flex-grow: 1;
     display: flex;
     flex-direction: column;     
-    min-width: 60vw;
-   
+    width: 60vw;
 }
 
 
@@ -230,12 +296,29 @@ html, body{
 
 .wrap{
   display: flex;
-  flex-grow: 3;
   margin: 5rem;
   flex-direction: column;
-  min-width: 0vw;
-  
+  height: 100%;
 }
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.wrapper > p{
+
+  display: flex;
+  font-size: 15px;
+  color: white;
+  overflow-wrap: break-word;
+  background-color:#36393f;
+  border-radius: 3px;
+  padding: 0.4rem;
+}
+
 
 .login{
   display: flex;
@@ -257,7 +340,7 @@ html, body{
 .login > a{
   background-color: rgb(41, 63, 98);
   color: white;
-  padding: 1em 1.5em;
+  padding: 1rem 1.5rem;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -278,3 +361,30 @@ html, body{
   margin-top: 1rem;
 }
 
+.user-list {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.user{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user > p{
+  color: white;
+  font-size: 20px;
+}
+
+.user > a{
+  margin-left: auto;
+  order: 2;
+  background: rgb(90, 90, 90);
+  padding: 1em 2.4em;
+  font-size: .9em;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}

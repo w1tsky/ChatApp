@@ -10,6 +10,15 @@ createRoomBtn.addEventListener('click', function () {
     createRoomModal.classList.add('active')
 })
 
-function closeModal(){
+function closeModal() {
     createRoomModal.classList.remove('active')
+}
+
+function showBar() {
+    var x = document.getElementById("nav");
+    if (x.className === "navbar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navbar";
+    }
 }

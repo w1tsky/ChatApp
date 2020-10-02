@@ -19,7 +19,7 @@ namespace ChatApp.Controllers
 
         public HomeController(AppDbContext ctx) => _ctx = ctx;
 
-        public IActionResult Index()
+        public IActionResult BrowseRooms()
         {
             var chats = _ctx.Chats
             .Include(x => x.Users)
@@ -29,6 +29,8 @@ namespace ChatApp.Controllers
 
             return View(chats);
         }
+
+        public IActionResult Index() => View();
 
         public IActionResult Find()
         {
@@ -56,6 +58,7 @@ namespace ChatApp.Controllers
         {
             var chat = new Chat
             {
+                Name = "Private",
                 Type = ChatType.Private
             };
 

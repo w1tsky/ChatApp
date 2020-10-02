@@ -28,9 +28,6 @@ namespace ChatApp.ViewComponents
             .Select(x => x.Chat)
             .ToList();
             return View(chats);
-
-
-
         }
     }
 }

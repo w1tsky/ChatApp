@@ -3,16 +3,16 @@
     <h2>Log In</h2>
     <form asp-controller="Account" asp-action="Login" class="login-form" >
         <h3>Username</h3>
-        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="username" placeholder="Username" required>
         <h3>Password</h3>
-        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
     <a asp-controller="Account" asp-action="Register">Sing Up</a>
   </div>
    
   <div class="wrap">
-    <h1>Simple Chat App</h1>
+    <h3>Simple Chat App</h3>
     <p>
           That is Simple Chat App created using ASP.NET Core and SignalR
       </p>
