@@ -21,10 +21,7 @@ namespace ChatApp.Controllers
 
         public IActionResult BrowseRooms()
         {
-            var chats = _ctx.Chats
-            .Include(x => x.Users)
-            .Where(x => !x.Users
-            .Any(y => y.UserId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            var chats = _ctx.Chats.Include(x => x.Users).Where(x => !x.Users.Any(y => y.UserId == User.FindFirst(ClaimTypes.NameIdentifier).Value)).Where(x => x.Type != ChatType.Private)
             .ToList();
 
             return View(chats);
