@@ -298,6 +298,7 @@ html, body{
   display: flex;
   margin: 5rem;
   flex-direction: column;
+  flex-grow: 3;
   height: 100%;
 }
 
@@ -334,7 +335,7 @@ html, body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
 }
 .login > a{
